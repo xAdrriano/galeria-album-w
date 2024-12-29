@@ -1,15 +1,15 @@
 <template>
     <div>
-        <header>
-            <nav>
-                <NuxtLink to="/galleries">Galeria albumów</NuxtLink>
-            </nav>
-        </header>
+        <div class="grid grid-cols-4 gap-5">
+            <div v-for="a in albumy">
+                <NuxtLink :to="`/${a.id}`">{{ a.title }}</NuxtLink>
+            </div>
+        </div>
     </div>
 </template>
 
-<script>
-
+<script setup>
+    const { data: albumy } = await useFetch('https://jsonplaceholder.typicode.com/albums')
 </script>
 
 <style scoped>
